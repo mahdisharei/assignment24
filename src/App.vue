@@ -4,7 +4,9 @@ import {ref, computed} from 'vue';
 const search = ref('')
 const users = ref([])
 const results = computed(() => {
-  return users.value.filter((item) => item.name.toLowerCase().includes(search.value.toLowerCase()))
+  if (search.value.length > 0) {
+    return users.value.filter((item) => item.name.toLowerCase().includes(search.value.toLowerCase()))
+  }
 })
 
 const useFetch = async (url) => {
